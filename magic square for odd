@@ -1,0 +1,33 @@
+import java.util.*;
+public class MagicSquare {
+    public static void main(String[]args){
+        Scanner imrose=new Scanner (System.in);
+        System.out.println("enter the number of the odd matrix : ");
+        int n=imrose.nextInt();
+        int [][]magic=new int[n][n];
+        int r=0; int c=n/2;
+        for(int i=1;i<n*n;i++)
+        {
+            magic[r][c]=i;
+            int newr=(r-1+n)%n;
+            int newc=(c+1)%n;
+            if(magic[newr][newc]!=0){
+                r=(r+1)%n;
+
+            }
+            else{
+                r=newr;
+                c=newc;
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                System.out.print(magic[i][j] +" ");
+            }
+            System.out.println();
+        }
+
+    }
+}
