@@ -1,0 +1,46 @@
+public class MaxMinDivideConquer {
+
+    // Function to return max and min using divide and conquer
+    public static int[] getMinMax(int[] arr, int low, int high) {
+        int[] result = new int[2];  // result[0] = min, result[1] = max
+
+        // If only one element
+        if (low == high) {
+            result[0] = arr[low];  // min
+            result[1] = arr[low];  // max
+            return result;
+        }
+
+        // If only two elements
+        if (high == low + 1) {
+            if (arr[low] > arr[high]) {
+                result[0] = arr[high];  // min
+                result[1] = arr[low];   // max
+            } else {
+                result[0] = arr[low];   // min
+                result[1] = arr[high];  // max
+            }
+            return result;
+        }
+
+        // If more than two elements
+        int mid = (low + high) / 2;
+        int[] left = getMinMax(arr, low, mid);
+        int[] right = getMinMax(arr, mid + 1, high);
+
+        // Compare results from left and right halves
+        result[0] = Math.min(left[0], right[0]);  // min
+        result[1] = Math.max(left[1], right[1]);  // max
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] numbers = {100, 23, 45, 89, 5, 77, 2, 56};
+
+        int[] result = getMinMax(numbers, 0, numbers.length - 1);
+
+        System.out.println("Minimum: " + result[0]);
+        System.out.println("Maximum: " + result[1]);
+    }
+}
