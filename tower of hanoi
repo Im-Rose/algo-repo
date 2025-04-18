@@ -1,0 +1,21 @@
+public class towerofhanoi {
+    public static void hanoi(int num,String a,String b,String c){
+        if(num==1)
+        {
+            System.out.println("move the disk 1 from " +a+ " to " +c);
+        }
+        else {
+            hanoi(num-1,a,c,b);
+            System.out.println("move the disk " + num + " from" +a+" to " +c);
+            hanoi(num-1,b,a,c);
+
+        }
+    }
+    public static void main(String[]args){
+        int n=4;
+        String A="A";
+        String B="B";
+        String C="C";
+        hanoi(n,A,B,C);
+    }
+}
