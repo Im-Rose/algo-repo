@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>banker's algorithm</title>
+</head>
+<body>
+    <h2>Banker's Algorithm</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Processes (comma separated):</label><br>
+        <input name="processes[]" placeholder=""><br><br>
+
+        <label>Available (comma separated):</label><br>
+        <input name="available[]" placeholder=""><br><br>
+
+        <label>Allocation (2D list):</label><br>
+        <textarea name="allocation" rows="3" cols="40" placeholder=""></textarea><br><br>
+
+        <label>Max Demand (2D list):</label><br>
+        <textarea name="max_demand" rows="3" cols="40" placeholder=""></textarea><br><br>
+
+        <button type="submit">Check Safe State</button>
+    </form>
+
+    <br>
+    <a href="{% url 'index' %}">Back to Home</a>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% elif message %}
+        <h3>{{ message }}</h3>
+        {% if success %}
+            <p>Safe Sequence: {{ sequence }}</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>First Come First Serve</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>First Come First Serve Algorithm</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="arrival_time">Arrival Times (comma separated):</label><br>
+        <input type="text" id="arrival_time" name="arrival_time"><br><br>
+        <label for="burst_time">Burst Times (comma separated):</label><br>
+        <input type="text" id="burst_time" name="burst_time"><br><br>
+        <button type="submit">Calculate</button>
+    </form>
+    <br>
+    <a href="{% url 'index' %}">Back to Home</a>
+</body>
+</html>
